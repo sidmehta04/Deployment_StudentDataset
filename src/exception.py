@@ -1,6 +1,6 @@
 import sys
 import logging
-import logger
+from src.logger import logging
   # Ensure logging_config.py is in the same directory or in PYTHONPATH
 
 class CustomException(Exception):
@@ -21,14 +21,3 @@ def error_message_detail(error, error_detail: sys):
     )
     return error_message
 
-# Example usage
-if __name__ == "__main__":
-    try:
-        # Deliberate error for demonstration (e.g., division by zero)
-        1 / 0
-    except Exception as e:
-        exc_type, exc_value, exc_traceback = sys.exc_info()
-        detailed_error_message = error_message_detail(e, sys)
-        logging.error(detailed_error_message)
-        # Optionally, raise the custom exception
-        raise CustomException(e, sys)
